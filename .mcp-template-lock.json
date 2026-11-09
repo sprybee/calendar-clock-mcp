@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://git.distinctclinic.com/ai/ai-mcp-template.git",
+  "language": "python",
+  "version": "1.0.0",
+  "tag": "python/v1.0.0",
+  "commit": "66e896b66555e2c836a79ef182f76da12d040591",
+  "directory": "templates/python"
+}

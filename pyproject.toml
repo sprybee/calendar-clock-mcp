@@ -1,0 +1,13 @@
+[project]
+name = "calendar-clock-mcp"
+version = "0.1.0"
+description = "时区转换、日期计算与 Unix 时间戳工具"
+requires-python = ">=3.10,<4"
+dependencies = ["mcp>=1.26,<2", "tzdata>=2024.1"]
+
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/calendar_clock_mcp"]
