@@ -1,7 +1,7 @@
 """Read-only calendar tools; no network, credentials or persistent state."""
 
 import math
-from datetime import date, datetime, time, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from mcp.server.fastmcp import FastMCP
@@ -9,9 +9,11 @@ from mcp.server.fastmcp import FastMCP
 mcp = FastMCP("calendar-clock-mcp", stateless_http=True, port=9000)
 
 
-def _zone(name: str) -> ZoneInfo:
+def _zone(name: str) -> ZoneInfo | timezone:
     if not name or len(name) > 100:
         raise ValueError("timezone must be a nonempty IANA name, e.g. Asia/Shanghai")
+    if name in {"UTC", "Etc/UTC", "Etc/GMT"}:
+        return timezone.utc
     try:
         return ZoneInfo(name)
     except (ZoneInfoNotFoundError, ValueError):
